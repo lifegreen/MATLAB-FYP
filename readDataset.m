@@ -1,5 +1,5 @@
-function [gestures] = readDataset()
-    load("H:\dos\WORK\Year 3\Final Year Project\Ninapro database\Database 1\S1_A1_E1.mat");
+function gestures = readDataset(dataset)
+    load(dataset);
 
     winSize = 15;
 
@@ -26,7 +26,4 @@ function [gestures] = readDataset()
     for g = 1:numel(classes)
         gestures{g} = windows(:,:,:,(labels == classes(g)));
     end
-
-    databaseInfo(gestures)
 end
-

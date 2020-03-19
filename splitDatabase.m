@@ -6,6 +6,7 @@ function [XTrain, YTrain, XValid, YValid] = splitDatabase(data, ratio)
     
     numClass = numel(data);
     classes = categorical(0:(numClass-1));
+    
     for i = 2:numClass
         len = size(data{i}, 4);
         
