@@ -5,7 +5,7 @@ function [XTrain, YTrain, XValid, YValid] = splitDatabase(data, ratio)
     YValid = categorical();
     
     numClass = numel(data);
-    classes = categorical(0:(numClass-1));
+    classes = categorical(1:(numClass-1));
     
     for i = 2:numClass
         len = size(data{i}, 4);
@@ -18,11 +18,11 @@ function [XTrain, YTrain, XValid, YValid] = splitDatabase(data, ratio)
         XValid = cat(4, XValid, data{i}(:,:,:,idx));
         XTrain = cat(4, XTrain, data{i}(:,:,:,sel));
         
-        temp(1:numel(idx), 1) = classes(i);
+        temp(1:numel(idx), 1) = classes(i-1);
         YValid = [YValid; temp];
         clear temp
         
-        temp(1:(len - numel(idx)), 1) = classes(i);
+        temp(1:(len - numel(idx)), 1) = classes(i-1);
         YTrain = [YTrain; temp];
         clear temp
     end
